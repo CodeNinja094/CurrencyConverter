@@ -4,9 +4,9 @@
     box-sizing: border-box;
     font-family: sans-serif;
 
-    overflow: auto;
+    /* overflow: auto;
     scrollbar-width: none;
-    -ms-overflow-style: none;
+    -ms-overflow-style: none; */
 }
 
 *::-webkit-scrollbar {
@@ -37,22 +37,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid white; */
 
 }
 
 main {
-    /* position: relative; */
     width: 80vw;
-    /* height: 100vh; */
     margin-top: 4.275rem;
-    /* border: 1px solid white; */
 }
 
 
 
 #title {
-    /* border: 1px solid white; */
     text-align: center;
     padding: 15px;
     color: white;
@@ -64,18 +59,17 @@ main {
 }
 
 #title p {
-    /* font-size: 1.25vw; */
     font-size: clamp(1rem, 2.7vw, 2rem);
     line-height: 1.7;
 }
 
 #content {
     width: 100%;
-    /* height: 100vh; */
     background-color: white;
     border-radius: 1.5rem;
     margin-top: 1rem;
     padding: 1.25rem;
+    box-shadow: 0 15px 20px -2px rgba(0, 0, 0, 0.51);
 }
 
 #subnav {
@@ -127,14 +121,11 @@ main {
 #symbol {
     width: 65px;
     height: 100%;
-    /* border: 1px solid red; */
-
 }
 
 #amount {
     width: 100%;
     height: 33%;
-    /* border: 1px solid red; */
     font-size: 15px;
     display: flex;
     justify-content: center;
@@ -144,7 +135,6 @@ main {
 #currencyIcon {
     width: 100%;
     height: 67%;
-    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -157,8 +147,7 @@ main {
     display: flex;
     align-items: center;
     font-size: 2rem;
-    overflow-y: visible;
-    overflow-y: hidden;
+
 }
 
 #textarea:focus {
@@ -171,12 +160,10 @@ main {
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    /* border: 1px solid red; */
-
 }
 
-.input {
-    border: 1px solid rgb(193, 193, 193);
+.country {
+    border: 2px solid rgb(77, 77, 77);
     border-radius: .5rem;
     height: 4rem;
     display: flex;
@@ -184,7 +171,7 @@ main {
     width: calc(50% - 5px);
 }
 
-.input:hover {
+.country:hover {
     background-color: rgb(244, 244, 244);
 }
 
@@ -196,7 +183,6 @@ main {
 .from-to {
     width: 100%;
     height: 33%;
-    /* border: 1px solid red; */
     font-size: 15px;
     display: flex;
     justify-content: center;
@@ -206,32 +192,67 @@ main {
 .countryFlag {
     width: 100%;
     height: 67%;
-    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.country {
+.countryName {
     width: calc(100% - 50px);
     height: 100%;
-    padding: 10px;
+    position: relative;
+}
+
+.dropdown {
+    height: 300px;
+    width: 330px;
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+    top: calc(100% + 15px);
+    left: calc(-335px + 100%);
+    z-index: 15;
+    overflow: scroll;
+    display: none;
+}
+
+.country-bar {
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 35px;
+    display: flex;
+}
+
+.flag {
+    /* border: 1px solid blue; */
+    width: 50px;
+    height: 100%;
     display: flex;
     align-items: center;
-    font-size: 2rem;
-    overflow-y: visible;
-    overflow-y: hidden;
+    justify-content: center;
+}
+
+.countrynamesymbol {
+    width: calc(100% - 50px);
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 0 10px;
+    font-size: smaller;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 /* Tablet */
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
     main {
         width: calc(100vw - 80px);
     }
-}
+} */
 
 /* Phone */
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     main {
         width: calc(100vw - 30px);
     }
@@ -251,11 +272,11 @@ main {
     .input {
         width: 100%;
     }
-}
+} */
 
 .custom-shape-divider-bottom-1747596149 {
     position: absolute;
-    top: -74vh;
+    top: -500px;
     left: 0;
     z-index: -5;
     width: 100%;
@@ -302,7 +323,7 @@ footer {
     margin-bottom: 5px;
 }
 
-.x > :first-child::after {
+.x> :first-child::after {
     content: "";
     position: absolute;
     top: 20px;

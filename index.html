@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <title>Currncy COnverter</title>
+    <title>Currncy Converter</title>
 </head>
 
 <body>
@@ -44,22 +44,25 @@
                     </div>
                 </div>
                 <div id="countryDiv">
-                    <div tabindex="0" class="input" id="country1">
+                    <div tabindex="0" class="country" id="country1">
                         <div class="C-symbol">
                             <div class="from-to">From</div>
                             <div class="countryFlag"></div>
                         </div>
-                        <div tabindex="0" class="country">
-                            1.00
+                        <div tabindex="0" class="countryName" id="countryName1">
+                            <div class="dropdown" id="dropdown1"></div>
                         </div>
+
                     </div>
-                    <div tabindex="0" class="input" id="country2">
+                    <div tabindex="0" class="country" id="country2">
                         <div class="C-symbol">
                             <div class="from-to">To</div>
                             <div class="countryFlag"></div>
                         </div>
-                        <div tabindex="0" class="country">
-                            1.00
+                        <div tabindex="0" class="countryName" id="countryName2">
+                            <div class="dropdown" id="dropdown2">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -110,6 +113,7 @@
 
 
     <script src="main.js"></script>
+    <script src="codes.js"></script>
 </body>
 
 </html>
