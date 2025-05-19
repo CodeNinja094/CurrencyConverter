@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>Currncy COnverter</title>
 </head>
 
@@ -32,13 +33,36 @@
                 <a href="" id="" class="option"><span>Alerts</span></a>
             </div>
 
-            <div id="amountbox">
-                <label for="amount">Amount</label>
-                <input type="text" id="amount">
-            </div>
-            <div id="country">
-                <div class="input" id="country1"></div>
-                <div class="input" id="country2"></div>
+            <div id="wrapper">
+                <div id="amountbox">
+                    <div id="symbol">
+                        <div id="amount">Amount</div>
+                        <div id="currencyIcon"></div>
+                    </div>
+                    <div tabindex="0" id="textarea" contenteditable="true">
+                        1.00
+                    </div>
+                </div>
+                <div id="countryDiv">
+                    <div tabindex="0" class="input" id="country1">
+                        <div class="C-symbol">
+                            <div class="from-to">From</div>
+                            <div class="countryFlag"></div>
+                        </div>
+                        <div tabindex="0" class="country">
+                            1.00
+                        </div>
+                    </div>
+                    <div tabindex="0" class="input" id="country2">
+                        <div class="C-symbol">
+                            <div class="from-to">To</div>
+                            <div class="countryFlag"></div>
+                        </div>
+                        <div tabindex="0" class="country">
+                            1.00
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -58,26 +82,30 @@
                     class="shape-fill"></path>
             </svg>
         </div>
-        <div>
+        <div class="x" id="aboutUs">
             <h3>About Us</h3>
             <p>We are committed to providing quality content and services that empower our users. Follow us for more
                 updates and insights.</p>
         </div>
 
-        <div>
+        <div class="x" id="contact">
             <h3>Contact</h3>
-            <p>Email: contact@example.com<br>Phone: +1 (234) 567-890</p>
+            <p><i class="bi bi-envelope-at-fill"></i> contact@example.com<br><i class="bi bi-telephone-fill"></i> +1
+                (234) 567-890</p>
         </div>
 
-        <div>
+        <div class="x" id="follow">
             <h3>Follow Us</h3>
-            <a href="#">Facebook</a><br>
-            <a href="#">Twitter</a><br>
-            <a href="#">LinkedIn</a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
         </div>
 
-        <hr>
-        <p>&copy; 2025 Your Company. All rights reserved.</p>
+
+        <div id="copyright">
+            <p>&copy; 2025 Your Company. All rights reserved.</p>
+        </div>
     </footer>
 
 

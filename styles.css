@@ -43,7 +43,7 @@ body {
 
 main {
     /* position: relative; */
-    width: 75vw;
+    width: 80vw;
     /* height: 100vh; */
     margin-top: 4.275rem;
     /* border: 1px solid white; */
@@ -80,6 +80,7 @@ main {
 
 #subnav {
     height: 3rem;
+    width: 100%;
     border: 1px solid rgb(209, 209, 209);
     border-radius: 100px;
     padding: 0.5rem;
@@ -100,39 +101,126 @@ main {
     align-items: center;
 }
 
+#wrapper {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 #amountbox {
-    position: relative;
+    border: 2px solid #4f8fd0;
+    border-radius: 0.5rem;
+    width: calc(33% - 5px);
+    height: 4rem;
+    display: flex;
+    flex-wrap: nowrap;
+
+}
+
+#amountbox:hover {
+    background-color: rgb(244, 244, 244);
+}
+
+#symbol {
+    width: 65px;
+    height: 100%;
+    /* border: 1px solid red; */
+
 }
 
 #amount {
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: .5rem;
-    margin-top: 20px;
-    height: 4rem;
     width: 100%;
-    font-size: 1.5rem;
+    height: 33%;
+    /* border: 1px solid red; */
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#currencyIcon {
+    width: 100%;
+    height: 67%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#textarea {
+    width: calc(100% - 65px);
+    height: 100%;
     padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    overflow-y: visible;
+    overflow-y: hidden;
 }
 
-label {
-    position: absolute;
-    font-size: 1rem;
-    background-color: rgb(255, 255, 255);
-    padding: 5px;
-    top: 6px;
-    left: 15px;
+#textarea:focus {
+    outline: none;
 }
 
-#country {
-    margin-top: 5px;
+#countryDiv {
+    width: calc(66% - 5px);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* border: 1px solid red; */
+
 }
 
 .input {
-    border: 3px solid rgb(0, 0, 0);
-
+    border: 1px solid rgb(193, 193, 193);
     border-radius: .5rem;
-    margin-top: 5px;
     height: 4rem;
+    display: flex;
+    flex-wrap: nowrap;
+    width: calc(50% - 5px);
+}
+
+.input:hover {
+    background-color: rgb(244, 244, 244);
+}
+
+.C-symbol {
+    width: 50px;
+    height: 100%;
+}
+
+.from-to {
+    width: 100%;
+    height: 33%;
+    /* border: 1px solid red; */
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.countryFlag {
+    width: 100%;
+    height: 67%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.country {
+    width: calc(100% - 50px);
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    overflow-y: visible;
+    overflow-y: hidden;
 }
 
 /* Tablet */
@@ -147,23 +235,27 @@ label {
     main {
         width: calc(100vw - 30px);
     }
-}
 
-footer {
-    width: 100vw;
-    /* height: 50vh; */
-    position: relative;
-    margin-top: 10vh;
-    /* background-color: white; */
-    /* border: 1px solid rgb(255, 0, 0); */
-    /* background: linear-gradient(to bottom, #16393c, #103e3c); */
-    background-color: #ffffff;
-    overflow: visible;
+    #amountbox {
+        width: 100%;
+    }
+
+    #countryDiv {
+        width: 100%;
+    }
+
+    .country {
+        padding: 26px;
+    }
+
+    .input {
+        width: 100%;
+    }
 }
 
 .custom-shape-divider-bottom-1747596149 {
     position: absolute;
-    top: -75vh;
+    top: -74vh;
     left: 0;
     z-index: -5;
     width: 100%;
@@ -181,5 +273,50 @@ footer {
 }
 
 .custom-shape-divider-bottom-1747596149 .shape-fill {
-    fill: #ff0000;
+    fill: #4e6688;
+}
+
+footer {
+    width: 100vw;
+    position: relative;
+    margin-top: 5vh;
+    padding-top: 15vh;
+    background: linear-gradient(to bottom, #4e6688, #1d2633);
+    overflow: visible;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.x {
+    color: white;
+    width: calc(100% / 3);
+    height: 300px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.x * {
+    width: 100%;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.x > :first-child::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: -10px;
+    height: 4px;
+    width: 100px;
+    background-color: rgb(1, 74, 59);
+}
+
+
+#copyright {
+    text-align: center;
+    color: #113d3c;
+    background-color: #d89934;
+    width: 100%;
+    font-size: smaller;
 }
