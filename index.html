@@ -37,7 +37,7 @@
                 <div id="amountbox">
                     <div id="symbol">
                         <div id="amount">Amount</div>
-                        <div id="currencyIcon"></div>
+                        <div id="currencyIcon">₹</div>
                     </div>
                     <div tabindex="0" id="textarea" contenteditable="true">
                         1.00
@@ -47,9 +47,14 @@
                     <div tabindex="0" class="country" id="country1">
                         <div class="C-symbol">
                             <div class="from-to">From</div>
-                            <div class="countryFlag"></div>
+                            <div class="countryFlag">
+                                <img src="https://flagsapi.com/IN/flat/64.png" alt="INR" height="30">
+                            </div>
                         </div>
                         <div tabindex="0" class="countryName" id="countryName1">
+                            <div class="countryNameDisplay">
+                                INR - Indian Rupee
+                            </div>
                             <div class="dropdown" id="dropdown1"></div>
                         </div>
 
@@ -57,15 +62,22 @@
                     <div tabindex="0" class="country" id="country2">
                         <div class="C-symbol">
                             <div class="from-to">To</div>
-                            <div class="countryFlag"></div>
+                            <div class="countryFlag">
+                                <img src="https://flagsapi.com/US/flat/64.png" alt="USD" height="30">
+                            </div>
                         </div>
                         <div tabindex="0" class="countryName" id="countryName2">
-                            <div class="dropdown" id="dropdown2">
-                                
+                            <div class="countryNameDisplay">
+                                USD - United States Dollar
                             </div>
+                            <div class="dropdown" id="dropdown2"></div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="convertBtnDiv">
+                <div id="result"></div>
+                <div id="convertBtn">Convert</div>
             </div>
         </div>
     </main>
@@ -114,6 +126,7 @@
 
     <script src="main.js"></script>
     <script src="codes.js"></script>
+    <script src="styles.js"></script>
 </body>
 
 </html>

@@ -105,7 +105,7 @@ main {
 }
 
 #amountbox {
-    border: 2px solid #4f8fd0;
+    border: 1px solid #4d4d4d;
     border-radius: 0.5rem;
     width: calc(33% - 5px);
     height: 4rem;
@@ -116,6 +116,10 @@ main {
 
 #amountbox:hover {
     background-color: rgb(244, 244, 244);
+}
+
+#amountbox.active {
+  border: 2px solid #016ce0;
 }
 
 #symbol {
@@ -138,16 +142,19 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: x-large;
+    font-weight: bolder;
 }
 
 #textarea {
     width: calc(100% - 65px);
     height: 100%;
-    padding: 10px;
+    padding: 20px 10px 0 10px;
     display: flex;
     align-items: center;
-    font-size: 2rem;
-
+    font-size: x-large;
+    font-weight: bold;
+    overflow: scroll;
 }
 
 #textarea:focus {
@@ -163,7 +170,7 @@ main {
 }
 
 .country {
-    border: 2px solid rgb(77, 77, 77);
+    border: 1px solid #4d4d4d;
     border-radius: .5rem;
     height: 4rem;
     display: flex;
@@ -171,8 +178,8 @@ main {
     width: calc(50% - 5px);
 }
 
-.country:hover {
-    background-color: rgb(244, 244, 244);
+.country.active {
+  border: 2px solid #016ce0;
 }
 
 .C-symbol {
@@ -201,6 +208,22 @@ main {
     width: calc(100% - 50px);
     height: 100%;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.countryNameDisplay {
+    height: 100%;
+    width: 100%;
+    padding: 20px 10px 0 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    white-space: nowrap;
+    overflow: scroll;
+    font-size: large;
+    font-weight: 700;
 }
 
 .dropdown {
@@ -210,7 +233,7 @@ main {
     border-radius: 5px;
     position: absolute;
     top: calc(100% + 15px);
-    left: calc(-335px + 100%);
+    left: -15px;
     z-index: 15;
     overflow: scroll;
     display: none;
@@ -221,6 +244,11 @@ main {
     width: 100%;
     height: 35px;
     display: flex;
+    cursor: pointer;
+}
+
+.country-bar:hover {
+    background-color: rgb(221, 221, 221);
 }
 
 .flag {
@@ -242,6 +270,40 @@ main {
     font-size: smaller;
     font-weight: bold;
     white-space: nowrap;
+}
+
+#convertBtnDiv {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: right;
+    align-items: center;
+    padding: 0 5px;
+    gap: 10px;
+}
+
+#result {
+    /* border: 2px solid rgb(77, 77, 77); */
+    border-radius: .5rem;
+    height: 5rem;
+    width: calc(80% - 10px);
+}
+
+#convertBtn {
+    border-radius: .5rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    width: calc(20% -10px);
+    font-size: larger;
+    font-weight: bolder;
+    background-color: #016ce0;
+    color: white;
+    cursor: pointer;
 }
 
 /* Tablet */
