@@ -1,4 +1,4 @@
-// search
+// select
 
 
 const editableDivs = document.querySelectorAll('.countryNameDisplay');
@@ -13,7 +13,6 @@ for (const editableDiv of editableDivs) {
         selection.addRange(range);
 
         // Optional: Log the selected text
-        console.log(selection.toString());
     });
 
 }
@@ -43,6 +42,7 @@ function changeSymbol() {
         }
     }
     document.querySelector('#currencyIcon').innerText = data[`${targetCode}`].symbol_native;
+    console.log(data[`${targetCode}`].symbol_native);
 }
 
 document.querySelector('#twoArrow').addEventListener('click', () => {
