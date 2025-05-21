@@ -13,9 +13,36 @@ for (const editableDiv of editableDivs) {
         selection.addRange(range);
 
         // Optional: Log the selected text
+
+        // editableDiv.addEventListener('')
     });
 
 }
+
+// search
+
+
+
+for (const editableDiv of editableDivs) {
+    const items = document.querySelectorAll('.country-bar');
+    editableDiv.addEventListener('click', () => {
+        items.forEach(item => {
+            item.style.display = 'flex';
+        });
+    });
+
+    editableDiv.addEventListener('input', () => {
+        const query = editableDiv.textContent.trim().toLowerCase();
+        items.forEach(item => {
+            let text = item.textContent.toLowerCase();
+            item.style.display = text.includes(query) ? 'flex' : 'none';
+        });
+    })
+
+
+
+}
+
 
 // swap country 
 
@@ -42,7 +69,6 @@ function changeSymbol() {
         }
     }
     document.querySelector('#currencyIcon').innerText = data[`${targetCode}`].symbol_native;
-    console.log(data[`${targetCode}`].symbol_native);
 }
 
 document.querySelector('#twoArrow').addEventListener('click', () => {
