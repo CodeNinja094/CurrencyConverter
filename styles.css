@@ -358,10 +358,42 @@ main {
 }
 
 #result {
-    /* border: 2px solid rgb(77, 77, 77); */
     border-radius: .5rem;
     height: 5rem;
     width: calc(80% - 10px);
+    display: flex;
+}
+
+#result>:first-child {
+    width: 60%;
+    line-height: 15px;
+    white-space: nowrap;
+    overflow: scroll;
+}
+
+#result>:nth-child(2) {
+    width: 40%;
+    font-size: small;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: scroll;
+}
+
+#result div {
+    height: 100%;
+    padding: 10px;
+}
+
+.Rspan1 {
+    font-size: medium;
+    font-weight: bold;
+    color: #7e848f;
+}
+
+.Rspan2 {
+    font-size: xx-large;
+    font-weight: bold;
+    color: #2d3b5a;
 }
 
 #convertBtn {

@@ -131,10 +131,6 @@ for (const child of countryDiv.children) {
 
 // Handle clicks outside the countryDiv
 document.addEventListener('click', (e) => {
-    // let items = document.querySelectorAll('.country-bar');
-    // items.forEach(item => {
-    //     item.style.display = 'flex';
-    // });
     // If the click is outside any .countryName element
     if (!e.target.closest('.countryName')) {
         const allDropdowns = countryDiv.querySelectorAll('.dropdown');
