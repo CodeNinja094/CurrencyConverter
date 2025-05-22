@@ -9,15 +9,6 @@ let rate1, rate2;
     rateresponse = await fetch(url);
     rateData = await rateresponse.json();
     setRateData();
-
-    // initial result1
-    result.children[0].children[0].innerText = `1 Indian Rupee =`;
-    result.children[0].children[2].innerText = `${(rate2 / rate1).toFixed(5)} US Dollar`;
-
-    // initial result2
-
-    result.children[1].children[0].innerText = `1 INR = ${(rate2 / rate1).toFixed(5)} USD`;
-    result.children[1].children[2].innerText = `1 USD = ${(rate1 / rate2).toFixed(5)} INR`;
 })();
 
 function setRateData() {
