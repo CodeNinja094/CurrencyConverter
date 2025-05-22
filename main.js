@@ -1,7 +1,58 @@
 const countryDiv = document.querySelector('#countryDiv');
+const result = document.querySelector('#result');
+const textarea = document.querySelector('#textarea');
+
+let seclectedCountry1 = 'INR';
+let seclectedCountry2 = 'USD';
 let countryBar;
 let response;
 let data;
+
+function setupNumberOnlyTextarea(textarea, maxLength) {
+    // Prevent typing invalid chars & respect max length
+    textarea.addEventListener('keypress', (e) => {
+        const char = e.key;
+        const allowed = /[0-9.]/;
+        if (!allowed.test(char) || textarea.innerText.length >= maxLength) {
+            e.preventDefault();
+        }
+    });
+
+    // // Clean pasted content & enforce max length
+    // textarea.addEventListener('paste', (e) => {
+    //     e.preventDefault();
+    //     let text = (e.clipboardData || window.clipboardData).getData('text');
+    //     // Keep digits and dots only
+    //     text = text.replace(/[^\d.]/g, '');
+
+    //     // Calculate available space
+    //     const available = maxLength - textarea.innerText.length;
+    //     // Trim to available length
+    //     const trimmed = text.slice(0, available);
+
+    //     document.execCommand('insertText', false, trimmed);
+    // });
+
+    // Enforce max length on any input (typing, delete, cut, etc)
+    textarea.addEventListener('input', () => {
+        if (textarea.innerText.length > maxLength) {
+            textarea.innerText = textarea.innerText.slice(0, maxLength);
+            // Move cursor to end
+            const range = document.createRange();
+            const sel = window.getSelection();
+            range.selectNodeContents(textarea);
+            range.collapse(false);
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+    });
+}
+
+setupNumberOnlyTextarea(textarea, 9)
+
+
+
+// create dropdown
 
 function updateList(data) {
     const dropdown1 = document.querySelector("#dropdown1");
@@ -106,6 +157,8 @@ for (const child of countryDiv.children) {
                             }
                         }
 
+                        targetCode
+
                         parentDiv.parentElement.children[0].children[1].children[0].src = `https://flagsapi.com/${data[`${targetCode}`].country_code}/flat/64.png`;
                         parentDiv.parentElement.children[0].children[1].children[0].onerror = function () {
                             this.onerror = null;
@@ -117,8 +170,15 @@ for (const child of countryDiv.children) {
                         if (parentDiv.id === 'countryName1') {
                             parentDiv.parentElement.parentElement.parentElement.children[0].children[0].children[1].innerText = data[`${targetCode}`].symbol_native;
 
+                            seclectedCountry1 = targetCode;
+                        } else {
+                            seclectedCountry2 = targetCode;
                         }
+                        setRateData(() => {
+                            displayResult1();
+                            displayResult2();
 
+                        });
                     })
                 }
             }
@@ -169,3 +229,17 @@ document.addEventListener('click', () => {
     countries.forEach(el => el.classList.remove('active'));
     amountbox.classList.remove('active');
 });
+
+// display result1
+
+function displayResult1() {
+    result.children[0].children[0].innerText = `${textarea.innerText} ${data[`${seclectedCountry1}`].name} = `;
+    result.children[0].children[2].innerText = `${((rate2 / rate1) * Number(textarea.innerText)).toFixed(5)} ${data[`${seclectedCountry2}`].name}`;
+}
+
+// display result2
+
+function displayResult2() {
+    result.children[1].children[0].innerText = `1 ${seclectedCountry1} = ${(rate2 / rate1).toFixed(5)} ${seclectedCountry2}`;
+    result.children[1].children[2].innerText = `1 ${seclectedCountry2} = ${(rate1 / rate2).toFixed(5)} ${seclectedCountry1}`;
+}
