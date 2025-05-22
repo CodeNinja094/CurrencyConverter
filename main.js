@@ -19,21 +19,6 @@ function setupNumberOnlyTextarea(textarea, maxLength) {
         }
     });
 
-    // // Clean pasted content & enforce max length
-    // textarea.addEventListener('paste', (e) => {
-    //     e.preventDefault();
-    //     let text = (e.clipboardData || window.clipboardData).getData('text');
-    //     // Keep digits and dots only
-    //     text = text.replace(/[^\d.]/g, '');
-
-    //     // Calculate available space
-    //     const available = maxLength - textarea.innerText.length;
-    //     // Trim to available length
-    //     const trimmed = text.slice(0, available);
-
-    //     document.execCommand('insertText', false, trimmed);
-    // });
-
     // Enforce max length on any input (typing, delete, cut, etc)
     textarea.addEventListener('input', () => {
         if (textarea.innerText.length > maxLength) {
@@ -49,9 +34,15 @@ function setupNumberOnlyTextarea(textarea, maxLength) {
     });
 }
 
-setupNumberOnlyTextarea(textarea, 9)
+setupNumberOnlyTextarea(textarea, 9);
 
+// fetch json
 
+(async function getData() {
+    response = await fetch('symbol.json');
+    data = await response.json();
+    updateList(data);
+})();
 
 // create dropdown
 
@@ -111,13 +102,6 @@ function updateList(data) {
     }
     items = document.querySelectorAll('.country-bar');
 }
-
-(async function getData() {
-    response = await fetch('symbol.json');
-    data = await response.json();
-    updateList(data);
-})();
-
 
 // Handle clicks inside the countryDiv
 for (const child of countryDiv.children) {

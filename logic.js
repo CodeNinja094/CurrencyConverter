@@ -16,7 +16,6 @@ let rate1, rate2;
     });
 
     // initial result1
-    console.log("hi")
     result.children[0].children[0].innerText = `1 Indian Rupee =`;
     result.children[0].children[2].innerText = `${(rate2 / rate1).toFixed(5)} US Dollar`;
 
@@ -26,17 +25,18 @@ let rate1, rate2;
     result.children[1].children[2].innerText = `1 USD = ${(rate1 / rate2).toFixed(5)} INR`;
 })();
 
-function setRateData(callback1, callback2) {
+function setRateData(callback1) {
     rate1 = rateData.usd[seclectedCountry1.toLowerCase()];
     rate2 = rateData.usd[seclectedCountry2.toLowerCase()];
     callback1();
-    callback2();
 }
 
-// select
+
 const editableDivs = document.querySelectorAll('.countryNameDisplay');
 
+
 for (const editableDiv of editableDivs) {
+    // select
     editableDiv.addEventListener('focus', () => {
         const selection = window.getSelection();
         const range = document.createRange();
@@ -46,11 +46,7 @@ for (const editableDiv of editableDivs) {
         selection.addRange(range);
     });
 
-}
-
-// search
-
-for (const editableDiv of editableDivs) {
+    // search
     editableDiv.addEventListener('click', () => {
         items.forEach(item => {
             item.style.display = 'flex';
@@ -64,11 +60,7 @@ for (const editableDiv of editableDivs) {
             item.style.display = text.includes(query) ? 'flex' : 'none';
         });
     })
-
-
-
 }
-
 
 // swap country 
 
