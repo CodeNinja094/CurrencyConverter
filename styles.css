@@ -39,24 +39,28 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
-#menu {
+.menu {
+    display: none;
+}
+
+#namvEldiv {
     height: 75px;
-    width: 700px;
+    width: 600px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
 }
 
 #action {
     height: 75px;
     width: 300px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
 }
 
 #action a:nth-child(3) {
@@ -204,6 +208,7 @@ main {
 }
 
 #countryDiv {
+    /* border: 1px solid red; */
     width: calc(70% - 5px);
     display: flex;
     justify-content: space-between;
@@ -242,6 +247,8 @@ main {
 .C-symbol {
     width: 50px;
     height: 100%;
+    /* border: 1px solid red; */
+
 }
 
 .from-to {
@@ -252,6 +259,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* border: 1px solid red; */
+
 }
 
 .countryFlag {
@@ -260,6 +269,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* border: 1px solid red; */
+
 }
 
 .countryName {
@@ -269,6 +280,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* border: 1px solid red; */
+
 }
 
 .countryNameDisplay {
@@ -283,6 +296,8 @@ main {
     overflow: scroll;
     font-size: large;
     font-weight: 700;
+    /* border: 1px solid red; */
+
 }
 
 .arrowIcon {
@@ -412,16 +427,80 @@ main {
 }
 
 /* Tablet */
-/* @media (max-width: 1024px) {
+@media (max-width: 1024px) {
     main {
         width: calc(100vw - 80px);
     }
-} */
+
+    #amountbox {
+        width: 100%;
+    }
+
+    #countryDiv {
+        width: 100%;
+    }
+}
 
 /* Phone */
-/* @media (max-width: 767px) {
+@media (max-width: 767px) {
     main {
         width: calc(100vw - 30px);
+    }
+    #navbar {
+        height: 45px;
+    }
+    #logo {
+        height: 40px;
+        width: fit-content;
+        justify-content: left;
+    }
+
+    #logo a {
+        margin: 0 20px;
+    }
+    #logo a img {
+        height: 30px;
+        width: 30px;
+    }
+
+    #namvEldiv {
+        display: none;
+    }
+
+    #action {
+        height: 75px;
+        width: max(100px, 40%);
+        padding: 0 5px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .navEle {
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        font-size: smaller;
+        font-weight: bold;
+    }
+
+    .menu {
+        height: 40px;
+        width: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: x-large;
+    }
+
+    .menu .bi-x-lg {
+        display: none;
     }
 
     #amountbox {
@@ -433,13 +512,17 @@ main {
     }
 
     .country {
-        padding: 26px;
-    }
-
-    .input {
         width: 100%;
     }
-} */
+
+    #result {
+        width: 100%;
+    }
+
+    #convertBtn {
+        width: 100%;
+    }
+}
 
 .custom-shape-divider-bottom-1747596149 {
     position: absolute;
@@ -471,40 +554,61 @@ footer {
     padding-top: 15vh;
     background: linear-gradient(to bottom, #4e6688, #1d2633);
     overflow: visible;
-    display: flex;
-    flex-wrap: wrap;
 }
 
-.x {
-    color: white;
-    width: calc(100% / 3);
-    height: 300px;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.x * {
+.footerWrap {
     width: 100%;
+    background: rgba(255, 255, 255, 0.07);
+    display: flex;
+}
+
+footer .x {
+    width: 25%;
+    margin: 30px auto 0 auto;
+    padding: 24px 28px;
+    border-radius: 18px;
+    z-index: 2;
     position: relative;
-    margin-bottom: 5px;
 }
 
-.x> :first-child::after {
-    content: "";
-    position: absolute;
-    top: 20px;
-    left: -10px;
-    height: 4px;
-    width: 100px;
-    background-color: rgb(1, 74, 59);
+footer .x h3 {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color: #ffd700;
 }
 
+footer .x p,
+footer .x a {
+    color: #f0f0f0;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
 
-#copyright {
+footer .x a {
+    margin: 0 8px;
+    display: inline-block;
+    transition: transform 0.2s, color 0.2s;
+    font-size: 1.5rem;
+    color: #ffd700;
+}
+
+footer .x a:hover {
+    transform: scale(1.2) rotate(-8deg);
+    color: #fff;
+}
+
+footer .x i {
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+footer #copyright {
     text-align: center;
-    color: #113d3c;
-    background-color: #d89934;
-    width: 100%;
-    font-size: smaller;
+    font-size: 1rem;
+    color: #e0e0e0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    background: none;
+    z-index: 2;
+    position: relative;
 }
