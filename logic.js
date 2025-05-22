@@ -45,7 +45,6 @@ for (const editableDiv of editableDivs) {
 // search
 
 for (const editableDiv of editableDivs) {
-    const items = document.querySelectorAll('.country-bar');
     editableDiv.addEventListener('click', () => {
         items.forEach(item => {
             item.style.display = 'flex';

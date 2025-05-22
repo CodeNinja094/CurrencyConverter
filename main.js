@@ -2,6 +2,7 @@ const countryDiv = document.querySelector('#countryDiv');
 const result = document.querySelector('#result');
 const textarea = document.querySelector('#textarea');
 
+let items;
 let seclectedCountry1 = 'INR';
 let seclectedCountry2 = 'USD';
 let countryBar;
@@ -108,6 +109,7 @@ function updateList(data) {
         flag2.appendChild(image2);
         countryBar2.appendChild(countrynamesymbol2);
     }
+    items = document.querySelectorAll('.country-bar');
 }
 
 (async function getData() {
