@@ -4,16 +4,11 @@ let rateresponse;
 let rate1, rate2;
 (async () => {
     const now = new Date();
-    const dateOnly = now.toISOString().slice(0, 10);
-    const date = dateOnly;
+    const date = now.toISOString().slice(0, 10);
     const url = `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@${date}/v1/currencies/usd.json`;
     rateresponse = await fetch(url);
     rateData = await rateresponse.json();
-    setRateData(() => {
-        displayResult1();
-        displayResult2();
-
-    });
+    setRateData();
 
     // initial result1
     result.children[0].children[0].innerText = `1 Indian Rupee =`;
@@ -25,17 +20,18 @@ let rate1, rate2;
     result.children[1].children[2].innerText = `1 USD = ${(rate1 / rate2).toFixed(5)} INR`;
 })();
 
-function setRateData(callback1) {
+function setRateData() {
     rate1 = rateData.usd[seclectedCountry1.toLowerCase()];
     rate2 = rateData.usd[seclectedCountry2.toLowerCase()];
-    callback1();
+    displayResult1();
+    displayResult2();
 }
 
 
 const editableDivs = document.querySelectorAll('.countryNameDisplay');
 
 
-for (const editableDiv of editableDivs) {
+editableDivs.forEach(editableDiv => {
     // select
     editableDiv.addEventListener('focus', () => {
         const selection = window.getSelection();
@@ -59,8 +55,8 @@ for (const editableDiv of editableDivs) {
             let text = item.textContent.toLowerCase();
             item.style.display = text.includes(query) ? 'flex' : 'none';
         });
-    })
-}
+    });
+});
 
 // swap country 
 

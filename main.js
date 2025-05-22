@@ -5,7 +5,6 @@ const textarea = document.querySelector('#textarea');
 let items;
 let seclectedCountry1 = 'INR';
 let seclectedCountry2 = 'USD';
-let countryBar;
 let response;
 let data;
 
@@ -103,90 +102,124 @@ function updateList(data) {
     items = document.querySelectorAll('.country-bar');
 }
 
-// Handle clicks inside the countryDiv
-for (const child of countryDiv.children) {
-    child.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent click from bubbling to document
-        const parentDiv = e.target.closest('.countryName');
+// Add this after your dropdowns are created
+document.querySelectorAll('.dropdown').forEach(dropdown => {
+    dropdown.addEventListener('click', (e) => {
+        const country = e.target.closest('.country-bar');
+        if (!country) return;
+
+        const parentDiv = dropdown.closest('.countryName');
+        parentDiv.querySelector('.countryNameDisplay').innerText = country.innerText;
+
+        const targetCode = country.innerText.split(' ')[0];
+
+        parentDiv.parentElement.children[0].children[1].children[0].src = `https://flagsapi.com/${data[`${targetCode}`].country_code}/flat/64.png`;
+        parentDiv.parentElement.children[0].children[1].children[0].onerror = function () {
+            this.onerror = null;
+            this.src = 'images/dollar-symbol.png';
+        };
+
+        parentDiv.parentElement.children[0].children[1].children[0].alt = `${data[`${targetCode}`].country_code}`;
+
+        if (parentDiv.id === 'countryName1') {
+            parentDiv.parentElement.parentElement.parentElement.children[0].children[0].children[1].innerText = data[`${targetCode}`].symbol_native;
+            seclectedCountry1 = targetCode;
+        } else {
+            seclectedCountry2 = targetCode;
+        }
+        dropdown.style.display = 'none';
+        setRateData();
+    });
+});
+
+// Attach event listeners to each .countryNameDisplay
+document.querySelectorAll('.countryNameDisplay').forEach(display => {
+    display.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Find the parent .countryName div
+        const parentDiv = display.closest('.countryName');
         const dropdown = parentDiv.querySelector('.dropdown');
 
-        const isVisible = dropdown.style.display === 'block';
-
         // Hide all dropdowns first
-        const allDropdowns = countryDiv.querySelectorAll('.dropdown');
-        for (const d of allDropdowns) {
+        document.querySelectorAll('.dropdown').forEach(d => {
             d.style.display = 'none';
-            d.parentElement.children[1].children[0].style.display = 'block';
-            d.parentElement.children[1].children[1].style.display = 'none';
-        }
+            // Optionally reset arrow icons here if needed
+            const arrowIcon = d.parentElement.querySelector('.arrowIcon');
+            if (arrowIcon) {
+                arrowIcon.children[0].style.display = 'block'; // down
+                arrowIcon.children[1].style.display = 'none';  // up
+            }
+        });
 
         // Toggle current dropdown
-        if (!isVisible) {
+        if (dropdown.style.display !== 'block') {
             dropdown.style.display = 'block';
-            parentDiv.children[1].children[0].style.display = 'none';
-            parentDiv.children[1].children[1].style.display = 'block';
-
-            if (!countryBar) {
-                countryBar = document.querySelectorAll('.country-bar');
-                for (const country of countryBar) {
-                    country.addEventListener('click', (e) => {
-                        let parentDiv = e.target.closest('.countryName');
-
-                        parentDiv.querySelector('.countryNameDisplay').innerText = country.innerText;
-
-                        let targetCode = '';
-                        for (const char of country.innerText) {
-                            if (char === ' ') {
-                                break;
-                            } else {
-                                targetCode += char;
-                            }
-                        }
-
-                        targetCode
-
-                        parentDiv.parentElement.children[0].children[1].children[0].src = `https://flagsapi.com/${data[`${targetCode}`].country_code}/flat/64.png`;
-                        parentDiv.parentElement.children[0].children[1].children[0].onerror = function () {
-                            this.onerror = null;
-                            this.src = 'images/dollar-symbol.png';
-                        };
-
-                        parentDiv.parentElement.children[0].children[1].children[0].alt = `${data[`${targetCode}`].country_code}`;
-
-                        if (parentDiv.id === 'countryName1') {
-                            parentDiv.parentElement.parentElement.parentElement.children[0].children[0].children[1].innerText = data[`${targetCode}`].symbol_native;
-
-                            seclectedCountry1 = targetCode;
-                        } else {
-                            seclectedCountry2 = targetCode;
-                        }
-                        setRateData(() => {
-                            displayResult1();
-                            displayResult2();
-
-                        });
-                    })
-                }
+            const arrowIcon = parentDiv.querySelector('.arrowIcon');
+            if (arrowIcon) {
+                arrowIcon.children[0].style.display = 'none'; // down
+                arrowIcon.children[1].style.display = 'block'; // up
             }
-
         }
     });
+});
 
-
-}
-
-// Handle clicks outside the countryDiv
-document.addEventListener('click', (e) => {
-    // If the click is outside any .countryName element
-    if (!e.target.closest('.countryName')) {
-        const allDropdowns = countryDiv.querySelectorAll('.dropdown');
-        for (const d of allDropdowns) {
+// Attach event listeners to each down arrow icon
+document.querySelectorAll('.bi-caret-down-square').forEach(icon => {
+    icon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const parentDiv = icon.closest('.countryName');
+        // Open the dropdown for this countryName
+        const dropdown = parentDiv.querySelector('.dropdown');
+        // Hide all dropdowns first
+        document.querySelectorAll('.dropdown').forEach(d => {
             d.style.display = 'none';
-            d.parentElement.children[1].children[0].style.display = 'block';
-            d.parentElement.children[1].children[1].style.display = 'none';
+            const arrowIcon = d.parentElement.querySelector('.arrowIcon');
+            if (arrowIcon) {
+                arrowIcon.children[0].style.display = 'block';
+                arrowIcon.children[1].style.display = 'none';
+            }
+        });
+        // Show this dropdown
+        dropdown.style.display = 'block';
+        const arrowIcon = parentDiv.querySelector('.arrowIcon');
+        if (arrowIcon) {
+            arrowIcon.children[0].style.display = 'none';
+            arrowIcon.children[1].style.display = 'block';
         }
+    });
+});
+
+// Attach event listeners to each up arrow icon
+document.querySelectorAll('.bi-caret-up-square').forEach(icon => {
+    icon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const parentDiv = icon.closest('.countryName');
+        // Close the dropdown for this countryName
+        const dropdown = parentDiv.querySelector('.dropdown');
+        dropdown.style.display = 'none';
+        const arrowIcon = parentDiv.querySelector('.arrowIcon');
+        if (arrowIcon) {
+            arrowIcon.children[0].style.display = 'block';
+            arrowIcon.children[1].style.display = 'none';
+        }
+    });
+});
+
+// Hide dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.countryName')) {
+        document.querySelectorAll('.dropdown').forEach(d => {
+            d.style.display = 'none';
+            const arrowIcon = d.parentElement.querySelector('.arrowIcon');
+            if (arrowIcon) {
+                arrowIcon.children[0].style.display = 'block';
+                arrowIcon.children[1].style.display = 'none';
+            }
+        });
     }
 });
+
+// ...existing code...
 
 let countries = document.querySelectorAll('.country');
 let amountbox = document.querySelector('#amountbox');
