@@ -9,19 +9,19 @@ let response;
 let data;
 
 document.querySelector('.bi-list').addEventListener('click', () => {
-    document.querySelector('#menuitemdiv').style.display = 'flex';
+    document.querySelector('#menuitemdiv').classList.add('open');
     document.querySelector('.bi-list').style.display = 'none';
     document.querySelector('.bi-x-lg').style.display = 'block';
 
 })
 document.querySelector('.bi-x-lg').addEventListener('click', () => {
-    document.querySelector('#menuitemdiv').style.display = 'none';
+    document.querySelector('#menuitemdiv').classList.remove('open');
     document.querySelector('.bi-x-lg').style.display = 'none';
     document.querySelector('.bi-list').style.display = 'block';
 
 })
 document.querySelector('#menuitemdiv').addEventListener('click', () => {
-    document.querySelector('#menuitemdiv').style.display = 'none';
+    document.querySelector('#menuitemdiv').classList.remove('open');
     document.querySelector('.bi-x-lg').style.display = 'none';
     document.querySelector('.bi-list').style.display = 'block';
 
