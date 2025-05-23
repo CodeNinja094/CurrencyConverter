@@ -8,6 +8,26 @@ let seclectedCountry2 = 'USD';
 let response;
 let data;
 
+document.querySelector('.bi-list').addEventListener('click', () => {
+    document.querySelector('#menuitemdiv').style.display = 'flex';
+    document.querySelector('.bi-list').style.display = 'none';
+    document.querySelector('.bi-x-lg').style.display = 'block';
+
+})
+document.querySelector('.bi-x-lg').addEventListener('click', () => {
+    document.querySelector('#menuitemdiv').style.display = 'none';
+    document.querySelector('.bi-x-lg').style.display = 'none';
+    document.querySelector('.bi-list').style.display = 'block';
+
+})
+document.querySelector('#menuitemdiv').addEventListener('click', () => {
+    document.querySelector('#menuitemdiv').style.display = 'none';
+    document.querySelector('.bi-x-lg').style.display = 'none';
+    document.querySelector('.bi-list').style.display = 'block';
+
+})
+
+
 function setupNumberOnlyTextarea(textarea, maxLength) {
     // Prevent typing invalid chars & respect max length
     textarea.addEventListener('keypress', (e) => {

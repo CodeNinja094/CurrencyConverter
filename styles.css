@@ -46,7 +46,11 @@ body {
     display: none;
 }
 
-#namvEldiv {
+#menuitemdiv {
+    display: none;
+}
+
+#navEldiv {
     height: 75px;
     width: 600px;
     display: flex;
@@ -137,6 +141,10 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.option:focus {
+    background-color: black;
 }
 
 #wrapper {
@@ -446,30 +454,40 @@ main {
     main {
         width: calc(100vw - 30px);
     }
+
+    #content {
+        padding: 5px;
+    }
+
     #navbar {
         height: 45px;
+        display: flex;
+        /* justify-content: space-between; */
+        align-items: center;
     }
+
     #logo {
         height: 40px;
         width: fit-content;
         justify-content: left;
     }
 
-    #logo a {
+    #sitelogo {
         margin: 0 20px;
     }
+
     #logo a img {
         height: 30px;
         width: 30px;
     }
 
-    #namvEldiv {
+    #navEldiv {
         display: none;
     }
 
     #action {
         height: 75px;
-        width: max(100px, 40%);
+        width: fit-content;
         padding: 0 5px;
         display: flex;
         justify-content: space-evenly;
@@ -482,11 +500,6 @@ main {
         justify-content: center;
         align-items: center;
         padding: 10px;
-        border-radius: 10px;
-        text-decoration: none;
-        color: white;
-        font-size: smaller;
-        font-weight: bold;
     }
 
     .menu {
@@ -503,16 +516,49 @@ main {
         display: none;
     }
 
+    #menuitemdiv {
+        width: 100vw;
+        background-color: white;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        justify-content: left;
+    }
+
+    .menuitemdivEle {
+        display: inline-block;
+        padding: 5px 0;
+        width: 100%;
+        font-size: medium;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+    }
+
+    .menuitemdivEle:focus {
+        background-color: #b4b4b4;
+    }
+
     #amountbox {
         width: 100%;
     }
 
     #countryDiv {
         width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
     }
 
     .country {
         width: 100%;
+    }
+
+    #twoArrow {
+        transform: rotate(90deg);
     }
 
     #result {
@@ -520,6 +566,10 @@ main {
     }
 
     #convertBtn {
+        width: 100%;
+    }
+
+    footer .x {
         width: 100%;
     }
 }
@@ -560,15 +610,17 @@ footer {
     width: 100%;
     background: rgba(255, 255, 255, 0.07);
     display: flex;
+    flex-wrap: wrap;
 }
 
 footer .x {
-    width: 25%;
+    width: max(330px, 33%);
     margin: 30px auto 0 auto;
     padding: 24px 28px;
     border-radius: 18px;
     z-index: 2;
     position: relative;
+
 }
 
 footer .x h3 {
